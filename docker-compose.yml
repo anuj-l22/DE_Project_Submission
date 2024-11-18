@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "3307:3306"  # Expose MySQL to the host machine
+    volumes:
+      - mysql_data:/var/lib/mysql  # Persistent storage for MySQL
+      - ./MySQL/init.sql:/docker-entrypoint-initdb.d/init.sql  # Optional: Initial setup script
+
+  etl:
+    build:
+      context: ./etl  # Directory where your ETL script and requirements.txt are stored
+    container_name: etl_container
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: mysql_container
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      REPO_OWNER: ${REPO_OWNER}
+      REPO_NAME: ${REPO_NAME}
+      FILE_PATH: ${FILE_PATH}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+    depends_on:
+      - mysql
+    command: ["python", "etl.py"]  # Runs your ETL script on container startup
+
+  app:
+    build:
+      context: ./app  # Directory where app.py and backend.py are stored
+    container_name: app_container
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: mysql_container
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "8501:8501"  # Streamlit app
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
