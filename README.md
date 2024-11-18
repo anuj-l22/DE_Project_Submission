@@ -5,7 +5,7 @@ This repository contains the complete setup for predicting gold prices using eve
 
 Watch the project in action:
 - **YouTube Demo Video**: [Watch the demo here]([https://www.youtube.com/watch?v=your-demo-link](https://youtu.be/yfBAJExhg90?si=t-iun44gaLVvZNli))
-- 
+  
 ## Getting Started
 
 Follow the steps below to clone and run the project locally using Docker:
