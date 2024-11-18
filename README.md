@@ -105,4 +105,4 @@ project-repo/
 Enjoy exploring gold price predictions!
 ```
 
-This way, you can copy the markdown code directly without any rendering issues. Let me know if you need further adjustments!
+
