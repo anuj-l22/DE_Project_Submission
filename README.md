@@ -18,8 +18,8 @@ Follow the steps below to clone and run the project locally using Docker:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/anuj-l22/project-repo.git
-   cd project-repo
+   git clone https://github.com/anuj-l22/DE_Project_Submission.git
+   cd Project_Submission
    ```
 
 2. **Update the `.env` file**:
@@ -43,7 +43,7 @@ Follow the steps below to clone and run the project locally using Docker:
    - App container for additional functionalities (e.g., Streamlit frontend).
 
 5. Access the services:
-   - The MySQL database is exposed internally for services and can be accessed at `localhost:3306` if required.
+   - The MySQL database is exposed internally for services and can be accessed at `localhost:3307` if required as local MySQL uses 3306 so in Docker I am using 3307 to avoid discrepancies
    - Logs for ETL processing and other services will be visible in the terminal.
 
 ### MySQL Credentials
