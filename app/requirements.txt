@@ -1,0 +1,9 @@
+streamlit
+pandas
+mysql-connector-python
+requests
+elasticsearch
+python-dotenv
+matplotlib
+scikit-learn  
+numpy         
