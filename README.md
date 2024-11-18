@@ -56,20 +56,38 @@ All dependencies are listed in `requirements.txt`. These are automatically insta
 - **Streamlit** (Frontend)
 - **Public GitHub Repository** (Event data source)
 
-### Directory Structure
+The directory structure in the image aligns with the project organization mentioned. Here's the updated structure reflecting the content more accurately based on the uploaded screenshot:
 
-```
+```plaintext
 project-repo/
 ├── MySQL/
-│   ├── README.md       # Instructions for MySQL setup
+│   ├── README.md       # Nothing added just a placeholder for creating directory
 │   ├── init.sql        # Initial schema and data for MySQL
-├── app/                # Application logic (e.g., Streamlit)
+├── app/                # Application logic ( Streamlit)
+│   ├── Dockerfile      # Dockerfile for Streamlit app
+│   ├── app.py          # Streamlit app logic
+│   ├── backend.py      # Backend logic for database and API interaction (yfinance and GitHub)
+│   ├── requirements.txt # Dependencies for the app container
+│   ├── Gold_Price_Trend.png # visualization/image file for app
+│   ├── Types_of_Events.png  # visualization/image file for app
+│   ├── README.md       # Nothing added just a placeholder for creating directory
 ├── etl/                # ETL scripts for fetching and processing data
+│   ├── Dockerfile      # Dockerfile for ETL container
+│   ├── etl.py          # ETL pipeline script
+│   ├── requirements.txt # Dependencies for the ETL container
+│   ├── README.md        # Nothing added just a placeholder for creating directory
 ├── .env                # Environment variables (optional for custom configurations)
 ├── docker-compose.yml  # Docker-Compose file to set up the environment
-├── README.md           # This file
+├── README.md           # Project overview and instructions
 ```
 
+### Key Notes:
+- The `app` directory contains the Streamlit front-end and backend Python scripts.
+- The `etl` directory contains Dockerfile and scripts for the ETL pipeline.
+- `.env` is optional but useful for storing environment variables like MySQL credentials and configurations.
+- The `docker-compose.yml` orchestrates the setup of the MySQL, app, and ETL containers.
+
+If you need further adjustments or details, let me know!
 ### Notes
 
 - Ensure you have a stable internet connection for downloading the necessary Docker images and dependencies during the first build.
