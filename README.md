@@ -3,6 +3,9 @@
 
 This repository contains the complete setup for predicting gold prices using event-driven datasets. The project is containerized with Docker, making it easy to deploy and run.
 
+Watch the project in action:
+- **YouTube Demo Video**: [Watch the demo here]([https://www.youtube.com/watch?v=your-demo-link](https://youtu.be/yfBAJExhg90?si=t-iun44gaLVvZNli))
+- 
 ## Getting Started
 
 Follow the steps below to clone and run the project locally using Docker:
@@ -12,7 +15,8 @@ Follow the steps below to clone and run the project locally using Docker:
 1. **Docker and Docker-Compose** must be installed on your machine.
    - [Install Docker](https://docs.docker.com/get-docker/)
    - [Install Docker-Compose](https://docs.docker.com/compose/install/)
-2. A **GitHub Personal Access Token** is required to pull the events data stored on a private GitHub repository.
+
+2. A stable internet connection is required to pull datasets and necessary Docker images.
 
 ### Steps to Clone and Run
 
@@ -22,28 +26,18 @@ Follow the steps below to clone and run the project locally using Docker:
    cd Project_Submission
    ```
 
-2. **Update the `.env` file**:
-   - Add your GitHub token to the `.env` file:
-     ```
-     GITHUB_TOKEN=your_github_token
-     ```
-   - **Note**: The default MySQL credentials for the internal container are:
-     - Username: `root`
-     - Password: `abcd1234`
-   - These can be changed if required by updating the `docker-compose.yml` file and corresponding scripts.
-
-3. Build and start the Docker containers:
+2. Build and start the Docker containers:
    ```bash
    docker-compose up --build
    ```
 
-4. The setup includes the following:
-   - MySQL container initialized with the schema from `MySQL/init.sql`.
+3. The setup includes the following:
+   - A MySQL container initialized with the schema from `MySQL/init.sql`.
    - Event and gold price ETL pipelines running via the `etl` service.
    - App container for additional functionalities (e.g., Streamlit frontend).
 
-5. Access the services:
-   - The MySQL database is exposed internally for services and can be accessed at `localhost:3307` if required as local MySQL uses 3306 so in Docker I am using 3307 to avoid discrepancies
+4. Access the services:
+   - The MySQL database is exposed internally for services and can be accessed at `localhost:3307` to avoid conflicts with the default MySQL port (`3306`).
    - Logs for ETL processing and other services will be visible in the terminal.
 
 ### MySQL Credentials
@@ -60,7 +54,7 @@ All dependencies are listed in `requirements.txt`. These are automatically insta
 - **Python** (ETL pipeline)
 - **Docker and Docker-Compose** (Containerization)
 - **Streamlit** (Frontend)
-- **GitHub API** (Event data source)
+- **Public GitHub Repository** (Event data source)
 
 ### Directory Structure
 
@@ -71,7 +65,7 @@ project-repo/
 │   ├── init.sql        # Initial schema and data for MySQL
 ├── app/                # Application logic (e.g., Streamlit)
 ├── etl/                # ETL scripts for fetching and processing data
-├── .env                # Environment variables (e.g., GitHub token)
+├── .env                # Environment variables (optional for custom configurations)
 ├── docker-compose.yml  # Docker-Compose file to set up the environment
 ├── README.md           # This file
 ```
@@ -83,26 +77,9 @@ project-repo/
   - `docker-compose.yml`
   - `MySQL/init.sql` (for any custom schema or user configurations)
 
-### Troubleshooting
+### Demo
 
-1. **GitHub Token Issues**:
-   - If the pipeline fails to fetch data from the GitHub repository, verify that the `GITHUB_TOKEN` is correct and has sufficient permissions.
-   
-2. **MySQL Connection Issues**:
-   - Ensure no other MySQL instance is running on the same port (default: 3306).
 
-3. **Docker Build Errors**:
-   - Try rebuilding the images:
-     ```bash
-     docker-compose down
-     docker-compose up --build
-     ```
 
-4. For further questions or issues, raise an issue in this repository.
-
----
-
-Enjoy exploring gold price predictions!
-```
 
 
